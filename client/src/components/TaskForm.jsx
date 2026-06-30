@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 function TaskForm({ fetchTasks, editingTask, setEditingTask }) {
   const [task, setTask] = useState({
@@ -45,18 +46,18 @@ function TaskForm({ fetchTasks, editingTask, setEditingTask }) {
       if (editingTask) {
         // Update Task
         await API.put(`/tasks/${editingTask._id}`, task);
-        alert("Task Updated Successfully");
+        toast.success("Task Updated Successfully");
       } else {
         // Add Task
         await API.post("/tasks", task);
-        alert("Task Added Successfully");
+        toast.success("Task Added Successfully");
       }
 
       resetForm();
       fetchTasks();
     } catch (error) {
       console.log(error);
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     }
   };
 

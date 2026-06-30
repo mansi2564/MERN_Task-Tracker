@@ -1,4 +1,5 @@
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 function TaskCard({ task, fetchTasks, setEditingTask }) {
 
@@ -16,13 +17,13 @@ function TaskCard({ task, fetchTasks, setEditingTask }) {
 
       fetchTasks();
 
-      alert("Task Deleted Successfully");
+      toast.success("Task Deleted Successfully");
 
     } catch (error) {
 
       console.log(error);
 
-      alert("Error deleting task");
+      toast.error("Error deleting task");
 
     }
 
