@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#F5F7FB;
+    font-family:'Segoe UI',sans-serif;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    border:none;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+
+.shadow-custom{
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}

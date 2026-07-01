@@ -9,6 +9,11 @@ const {
   deleteTask,
 } = require("../controllers/taskController");
 
+const { protect } = require("../middleware/authMiddleware");
+
+// All routes require login
+router.use(protect);
+
 router.get("/", getTasks);
 
 router.post("/", createTask);

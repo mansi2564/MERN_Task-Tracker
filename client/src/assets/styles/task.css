@@ -1,0 +1,31 @@
+.task-card{
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.task-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.badge{
+
+font-size:.85rem;
+
+padding:8px 14px;
+
+border-radius:20px;
+
+}
+
+.btn{
+
+border-radius:10px;
+
+}

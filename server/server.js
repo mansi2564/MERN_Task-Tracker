@@ -1,14 +1,15 @@
 require("dotenv").config();
 
-const express=require("express");
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
 
-const cors=require("cors");
+const connectDB = require("./config/db");
 
-const connectDB=require("./config/db");
+const taskRoutes = require("./routes/taskRoutes");
+const authRoutes = require("./routes/authRoutes");
 
-const taskRoutes=require("./routes/taskRoutes");
-
-const app=express();
+const app = express();
 
 connectDB();
 
@@ -16,14 +17,20 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/api/tasks",taskRoutes);
+app.use(morgan("dev"));
 
-app.get("/",(req,res)=>{
-    res.send("Task Tracker API Running");
+app.get("/", (req, res) => {
+  res.send("🚀 TaskFlow Pro API Running");
 });
 
-const PORT=process.env.PORT||5000;
+// Authentication Routes
+app.use("/api/auth", authRoutes);
 
-app.listen(PORT,()=>{
-    console.log(`Server running on port ${PORT}`);
+// Task Routes
+app.use("/api/tasks", taskRoutes);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`✅ Server Running on Port ${PORT}`);
 });

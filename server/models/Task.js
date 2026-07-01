@@ -4,14 +4,13 @@ const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "Task title is required"],
+      required: true,
       trim: true,
     },
 
     description: {
       type: String,
-      required: [true, "Task description is required"],
-      trim: true,
+      required: true,
     },
 
     priority: {
@@ -24,6 +23,29 @@ const taskSchema = new mongoose.Schema(
       type: String,
       enum: ["Pending", "Completed"],
       default: "Pending",
+    },
+
+    category: {
+      type: String,
+      enum: [
+        "Study",
+        "Work",
+        "Personal",
+        "Shopping",
+        "Health",
+        "Other",
+      ],
+      default: "Personal",
+    },
+
+    dueDate: {
+      type: Date,
+    },
+
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   {
